@@ -23,4 +23,6 @@ btnAddContact.onclick = () =>{
 
 
 
+
+
 loadContact(localStorage, contactList);

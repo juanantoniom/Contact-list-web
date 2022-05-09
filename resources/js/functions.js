@@ -16,7 +16,7 @@ const loadContact = (localStorage, parentNode) => {
 
     createContact(parentNode, mycontact, localStorage);
 
-    deleteContact(mycontact, localStorage);
+    //deleteContact(mycontact, localStorage);
   }
 }
 
@@ -36,11 +36,12 @@ const createContact = (parentNode, mycontact, localStorage) =>{
     divContact.classList.add("contact");
     deleteIcon.classList.add("material-icons", "icono")
 
-    //deleteIcon.onclick = () =>{
+    //deleteIcon.onclick = () =>{              <----//otra manera de borrar a un contact
     //  localStorage.removeItem(mycontact.id);
       //window.location.href ="/";
     //  location.reload();
     //}
+    deleteContact(deleteIcon,mycontact, localStorage); //metodo borrar contact
 
     divContact.appendChild(nameContact);
     divContact.appendChild(numberContact);
@@ -52,15 +53,16 @@ const createContact = (parentNode, mycontact, localStorage) =>{
 }
 
 
-const deleteContact = (mycontact, localStorage) =>{
+const deleteContact = (deleteIcon,mycontact, localStorage) =>{
 
-  let myDeleteIcon = document.querySelector(".icono");
+  deleteIcon.onclick = () =>{
 
-      myDeleteIcon.onclick = () =>{
-        if(confirm("are you sure")){
-          localStorage.removeItem(mycontact.id);
-          location.reload();
-        }
+          if(confirm("Are you sure to delete " + mycontact.name + " ?")){
+            localStorage.removeItem(mycontact.id);
+            location.reload();
+          }
+  }
 
-      }
+
+
 }
